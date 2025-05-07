@@ -1,0 +1,70 @@
+diff --git a/lib/utils/clk/sg2044_clk.c b/lib/utils/clk/sg2044_clk.c
+index 696027e..f6f8514 100644
+--- a/lib/utils/clk/sg2044_clk.c
++++ b/lib/utils/clk/sg2044_clk.c
+@@ -543,7 +543,7 @@ static int sg2044_clk_init(const void *fdt, int nodeoff,
+ }
+ 
+ static const struct fdt_match sg2044_clk_match[] = {
+-	{ .compatible = "sg2044, pll-clock" },
++	{ .compatible = "c920v2, pll-clock" },
+ 	{},
+ };
+ 
+diff --git a/lib/utils/cppc/fdt_cppc_sg2044.c b/lib/utils/cppc/fdt_cppc_sg2044.c
+index def9eab..91667fa 100644
+--- a/lib/utils/cppc/fdt_cppc_sg2044.c
++++ b/lib/utils/cppc/fdt_cppc_sg2044.c
+@@ -68,7 +68,7 @@ static int sg2044_cppc_probe(unsigned long reg)
+ }
+ 
+ static struct sbi_cppc_device sbi_sg2044_cppc = {
+-	.name		= "sg2044-cppc",
++	.name		= "c920v2-cppc",
+ 	.cppc_read	= sg2044_cppc_read,
+ 	.cppc_write	= sg2044_cppc_write,
+ 	.cppc_probe	= sg2044_cppc_probe,
+@@ -105,7 +105,7 @@ static int sg2044_cppc_cold_init(const void *fdt, int nodeoff,
+ }
+ 
+ static const struct fdt_match sg2044_cppc_match[] = {
+-	{ .compatible = "sophgo,sg2044-cppc" },
++	{ .compatible = "rv2036,c920v2-cppc" },
+ 	{},
+ };
+ 
+diff --git a/lib/utils/reset/fdt_reset_sg2042_hwmon_mcu.c b/lib/utils/reset/fdt_reset_sg2042_hwmon_mcu.c
+index 2f2ba7d..40bfada 100644
+--- a/lib/utils/reset/fdt_reset_sg2042_hwmon_mcu.c
++++ b/lib/utils/reset/fdt_reset_sg2042_hwmon_mcu.c
+@@ -52,7 +52,7 @@ static void sg2042_mcu_reset(u32 type, u32 reason)
+ }
+ 
+ static struct sbi_system_reset_device sg2042_mcu_reset_device = {
+-	.name = "sg2042-mcu-reset",
++	.name = "rv2036-mcu-reset",
+ 	.system_reset_check = sg2042_mcu_reset_check,
+ 	.system_reset = sg2042_mcu_reset
+ };
+@@ -83,7 +83,7 @@ static int sg2042_mcu_reset_init(const void *fdt, int nodeoff,
+ }
+ 
+ static const struct fdt_match sg2042_mcu_reset_match[] = {
+-	{ .compatible = "sophgo,sg2042-hwmon-mcu", .data = (void *)true},
++	{ .compatible = "rv2036,hwmon-mcu", .data = (void *)true},
+ 	{ },
+ };
+ 
+diff --git a/platform/generic/thead/thead-generic.c b/platform/generic/thead/thead-generic.c
+index fedb614..6257329 100644
+--- a/platform/generic/thead/thead-generic.c
++++ b/platform/generic/thead/thead-generic.c
+@@ -55,7 +55,7 @@ static const struct fdt_match thead_generic_match[] = {
+ 	{ .compatible = "sophgo,cv1812h", .data = &thead_pmu_quirks },
+ 	{ .compatible = "sophgo,sg2000", .data = &thead_pmu_quirks },
+ 	{ .compatible = "sophgo,sg2002", .data = &thead_pmu_quirks },
+-	{ .compatible = "sophgo,sg2044", .data = &thead_pmu_quirks },
++	{ .compatible = "rv2036,c920v2", .data = &thead_pmu_quirks },
+ 	{ .compatible = "thead,th1520", .data = &thead_th1520_quirks },
+ 	{ },
+ };

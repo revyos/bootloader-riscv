@@ -1,0 +1,311 @@
+diff --git a/arch/riscv/boot/dts/sg2042.dts b/arch/riscv/boot/dts/sg2042.dts
+index a15145f..dd35333 100644
+--- a/arch/riscv/boot/dts/sg2042.dts
++++ b/arch/riscv/boot/dts/sg2042.dts
+@@ -16,14 +16,14 @@
+  		};
+ 
+ 		bm-sd@704002B000 {
+-			compatible = "sophgo,sg2044-dwcmshc";
++			compatible = "rv2036,c920v2-dwcmshc";
+ 			reg = <0x70 0x4002B000 0x0 0x2000>;
+ 			bus-width = <4>;
+ 			alias = "sd0";
+ 		};
+ 
+ 		flash-controller@7000180000 {
+-			compatible = "sophgo,spifmc";
++			compatible = "rv2036,spifmc";
+ 			reg = <0x70 0x00180000 0x0 0x1000000>;
+ 			clock-frequency = <100000000>;
+ 			sophgo-config;
+@@ -31,7 +31,7 @@
+ 		};
+ 
+ 		flash-controller@7002180000 {
+-			compatible = "sophgo,spifmc";
++			compatible = "rv2036,spifmc";
+ 			reg = <0x70 0x02180000 0x0 0x1000000>;
+ 			clock-frequency = <100000000>;
+ 			sophgo-boot = <0x00000000 0x00600000>;
+diff --git a/arch/riscv/boot/dts/sg2044.dts b/arch/riscv/boot/dts/sg2044.dts
+index 34cde1b..b366503 100644
+--- a/arch/riscv/boot/dts/sg2044.dts
++++ b/arch/riscv/boot/dts/sg2044.dts
+@@ -1,8 +1,8 @@
+ /dts-v1/;
+ 
+ / {
+-	model = "SOPHGO SG2044 RISC-V";
+-	compatible = "sophgo,sg2044";
++	model = "RV2036 C920V2 RISC-V";
++	compatible = "rv2036,c920v2";
+ 	#address-cells = <2>;
+ 	#size-cells = <2>;
+ 
+@@ -2875,7 +2875,7 @@
+ 		ranges;
+ 
+ 		aclint_mswi: interrupt-controller@6d44000000 {
+-			compatible = "sophgo,sg2044-aclint-mswi", "thead,c900-aclint-mswi";
++			compatible = "rv2036,c920v2-aclint-mswi", "thead,c900-aclint-mswi";
+ 			reg = <0x6d 0x44000000 0x0 0x00004000>;
+ 			interrupts-extended = <&cpu0_intc 3>,
+ 					      <&cpu1_intc 3>,
+@@ -2944,7 +2944,7 @@
+ 		};
+ 
+ 		aclint_mtimer: timer@6d44004000 {
+-			compatible = "sophgo,sg2044-aclint-mtimer", "thead,c900-aclint-mtimer";
++			compatible = "rv2036,c920v2-aclint-mtimer", "thead,c900-aclint-mtimer";
+ 			reg = <0x6d 0x44004000 0x0 0x00008000>;
+ 			reg-names = "mtimecmp";
+ 			interrupts-extended = <&cpu0_intc 7>,
+@@ -3015,7 +3015,7 @@
+ 
+ 		aclint_sswi: interrupt-controller@6d4400c000 {
+ 			#address-cells = <1>;
+-			compatible = "sophgo,sg2044-aclint-sswi", "thead,c900-aclint-sswi";
++			compatible = "rv2036,c920v2-aclint-sswi", "thead,c900-aclint-sswi";
+ 			reg = <0x6d 0x4400c000 0x0 0x00001000>;
+ 			#interrupt-cells = <0>;
+ 			interrupt-controller;
+@@ -3086,7 +3086,7 @@
+ 		};
+ 
+ 		intc: interrupt-controller@6d40000000 {
+-			compatible = "sophgo,sg2044-plic", "thead,c900-plic";
++			compatible = "rv2036,c920v2-plic", "thead,c900-plic";
+ 			#address-cells = <0>;
+ 			#interrupt-cells = <2>;
+ 			reg = <0x6d 0x40000000 0x0 0x10000000>;
+@@ -3170,14 +3170,14 @@
+  		};
+ 
+ 		sd0: bm-sd@703000b000 {
+-			compatible = "sophgo,sg2044-dwcmshc";
++			compatible = "rv2036,c920v2-dwcmshc";
+ 			reg = <0x70 0x3000b000 0x0 0x2000>;
+ 			bus-width = <4>;
+ 			alias = "sd0";
+ 		};
+ 
+ 		spifmc0: flash-controller@7001000000 {
+-			compatible = "sophgo,spifmc";
++			compatible = "rv2036,spifmc";
+ 			reg = <0x70 0x01000000 0x0 0x4000000>;
+ 			clock-frequency = <100000000>;
+ 			sophgo-boot = <0x00000000 0x00080000>;
+@@ -3185,7 +3185,7 @@
+ 		};
+ 
+ 		spifmc1: flash-controller@7005000000 {
+-			compatible = "sophgo,spifmc";
++			compatible = "rv2036,spifmc";
+ 			reg = <0x70 0x05000000 0x0 0x4000000>;
+ 			clock-frequency = <100000000>;
+ 			sophgo-config;
+@@ -3318,124 +3318,124 @@
+ 			};
+ 			/* pll clock */
+ 			mpll0: mpll0 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "mpll0_clock";
+ 			};
+ 			mpll1: mpll1 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "mpll1_clock";
+ 			};
+ 			mpll2: mpll2 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "mpll2_clock";
+ 			};
+ 			mpll3: mpll3 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "mpll3_clock";
+ 			};
+ 			mpll4: mpll4 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "mpll4_clock";
+ 			};
+ 			mpll5: mpll5 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "mpll5_clock";
+ 			};
+ 			fpll0: fpll0 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "fpll0_clock";
+ 			};
+ 			fpll1: fpll1 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "fpll1_clock";
+ 			};
+ 			dpll0: dpll0 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "dpll0_clock";
+ 			};
+ 			dpll1: dpll1 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "dpll1_clock";
+ 			};
+ 			dpll2: dpll2 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "dpll2_clock";
+ 			};
+ 			dpll3: dpll3 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "dpll3_clock";
+ 			};
+ 			dpll4: dpll4 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "dpll4_clock";
+ 			};
+ 			dpll5: dpll5 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "dpll5_clock";
+ 			};
+ 			dpll6: dpll6 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "dpll6_clock";
+ 			};
+ 			dpll7: dpll7 {
+-				compatible = "sg2044, pll-clock";
++				compatible = "c920v2, pll-clock";
+ 				#clock-cells = <0>;
+ 				subctrl-syscon = <&top_misc>;
+ 				clocks = <&cgi>;
+ 				clock-output-names = "dpll7_clock";
+ 			};
+ 			div_clk: div_clk {
+-				compatible = "sg2044, pll-child-clock";
++				compatible = "c920v2, pll-child-clock";
+ 				#clock-cells = <1>;
+ 				subctrl-syscon = <&top_misc>;
+ 			};
+ 			mux_clk: mux_clk {
+-				compatible = "sg2044, pll-mux-clock";
++				compatible = "c920v2, pll-mux-clock";
+ 				#clock-cells = <1>;
+ 				subctrl-syscon = <&top_misc>;
+ 			};
+diff --git a/arch/riscv/boot/dtso/sg2044-evb.dtso b/arch/riscv/boot/dtso/sg2044-evb.dtso
+index 8abc782..eec4604 100644
+--- a/arch/riscv/boot/dtso/sg2044-evb.dtso
++++ b/arch/riscv/boot/dtso/sg2044-evb.dtso
+@@ -5,7 +5,7 @@
+ 	#address-cells = <1>;
+ 	#size-cells = <0>;
+ 	sg2044-reset@17 {
+-		compatible = "sophgo,sg2042-hwmon-mcu";
++		compatible = "rv2036,hwmon-mcu";
+ 		reg = <0x17>;
+ 	};
+ 
+diff --git a/drivers/blkdev/sdhci-dwc/sd.c b/drivers/blkdev/sdhci-dwc/sd.c
+index 351775e..5bd4c65 100644
+--- a/drivers/blkdev/sdhci-dwc/sd.c
++++ b/drivers/blkdev/sdhci-dwc/sd.c
+@@ -813,7 +813,7 @@ static int probe(struct platform_device *pdev)
+ 
+ static struct of_device_id match_table[] = {
+ 	{
+-		.compatible = "sophgo,sg2044-dwcmshc",
++		.compatible = "rv2036,c920v2-dwcmshc",
+ 		.data = (void *)NULL,
+ 	},
+ 	{},
+diff --git a/drivers/mtd/spifmc-sophgo/sgspif.c b/drivers/mtd/spifmc-sophgo/sgspif.c
+index c3b6e43..563e64f 100644
+--- a/drivers/mtd/spifmc-sophgo/sgspif.c
++++ b/drivers/mtd/spifmc-sophgo/sgspif.c
+@@ -736,7 +736,7 @@ static int probe(struct platform_device *pdev)
+ 
+ static struct of_device_id match_table[] = {
+ 	{
+-		.compatible = "sophgo,spifmc",
++		.compatible = "rv2036,spifmc",
+ 		.data = (void *)NULL,
+ 	},
+ 	{},
+diff --git a/plat/sg2044/plat.c b/plat/sg2044/plat.c
+index dffbc04..1f365b6 100644
+--- a/plat/sg2044/plat.c
++++ b/plat/sg2044/plat.c
+@@ -412,7 +412,7 @@ static void config_init(struct config *cfg)
+ 
+ 	/* init pcie config */
+ 	for (i = 0; i < PCIE_MAX; ++i, ++p) {
+-		p->compatible = "sophgo,sg2044-pcie-host";
++		p->compatible = "rv2036,c920v2-pcie-host";
+ 		p->bus_start = 0;
+ 		p->bus_end = 255;
+ 		p->coherent = true;
+@@ -674,7 +674,7 @@ static void add_cppc_node(struct config *cfg)
+ 	}
+ 
+ 	off = fdt_add_subnode(fdt, off, "cppc@0");
+-	fdt_setprop_string(fdt, off, "compatible", "sophgo,sg2044-cppc");
++	fdt_setprop_string(fdt, off, "compatible", "rv2036,c920v2-cppc");
+ 	fdt_setprop_u64(fdt, off, "min-frequency", MHz(1000));
+ 	fdt_setprop_u64(fdt, off, "max-frequency", op->cpu_freq);
+ 	fdt_setprop_u64(fdt, off, "step", MHz(25));

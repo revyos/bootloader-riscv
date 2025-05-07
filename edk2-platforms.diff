@@ -1,0 +1,512 @@
+diff --git a/Silicon/Sophgo/Drivers/Net/DwMac4SnpDxe/DwMac4SnpDxe.c b/Silicon/Sophgo/Drivers/Net/DwMac4SnpDxe/DwMac4SnpDxe.c
+index f32e59b360..d6d5fbe12e 100755
+--- a/Silicon/Sophgo/Drivers/Net/DwMac4SnpDxe/DwMac4SnpDxe.c
++++ b/Silicon/Sophgo/Drivers/Net/DwMac4SnpDxe/DwMac4SnpDxe.c
+@@ -1587,7 +1587,7 @@ DwMac4SnpDxeEntry (
+ 
+   Status = FdtClient->FindCompatibleNode (
+     FdtClient,
+-    "sophgo,ethernet",
++    "rv2036,ethernet",
+     &Node
+   );
+   if (Status == EFI_NOT_FOUND) {
+diff --git a/Silicon/Sophgo/Drivers/Net/StmmacMdioDxe/StmmacMdioDxe.c b/Silicon/Sophgo/Drivers/Net/StmmacMdioDxe/StmmacMdioDxe.c
+index 37cfc4d5fb..a291a1297a 100644
+--- a/Silicon/Sophgo/Drivers/Net/StmmacMdioDxe/StmmacMdioDxe.c
++++ b/Silicon/Sophgo/Drivers/Net/StmmacMdioDxe/StmmacMdioDxe.c
+@@ -304,7 +304,7 @@ MdioDxeInitialize (
+ 
+   Status = FdtClient->FindCompatibleNode (
+                                      FdtClient,
+-                                     "sophgo,ethernet",
++                                     "rv2036,ethernet",
+                                      &Node
+                                      );
+   if (EFI_ERROR (Status)) {
+@@ -374,7 +374,7 @@ MdioDxeInitialize (
+   Status = FdtClient->GetNodeProperty (
+ 		                FdtClient,
+ 				Node,
+-				"sophgo,gmac",
++				"rv2036,gmac",
+ 				&Prop,
+ 				NULL
+ 				);
+@@ -382,7 +382,7 @@ MdioDxeInitialize (
+     Status = FdtClient->GetNodeProperty (
+ 		                FdtClient,
+ 				Node,
+-				"sophgo,xlgmac",
++				"rv2036,xlgmac",
+ 				&Prop,
+ 				NULL
+ 				);
+diff --git a/Silicon/Sophgo/Drivers/SdHostDxe/SdHostDxe.c b/Silicon/Sophgo/Drivers/SdHostDxe/SdHostDxe.c
+index a17e652f4f..17026b1e87 100644
+--- a/Silicon/Sophgo/Drivers/SdHostDxe/SdHostDxe.c
++++ b/Silicon/Sophgo/Drivers/SdHostDxe/SdHostDxe.c
+@@ -435,13 +435,13 @@ SdHostInitialize (
+ 
+   for (FindNodeStatus = FdtClient->FindCompatibleNode (
+                                      FdtClient,
+-                                     "sophgo,sg2044-dwcmshc",
++                                     "rv2036,c920v2-dwcmshc",
+                                      &Node
+                                      );
+        !EFI_ERROR (FindNodeStatus);
+        FindNodeStatus = FdtClient->FindNextCompatibleNode (
+                                      FdtClient,
+-                                     "sophgo,sg2044-dwcmshc",
++                                     "rv2036,c920v2-dwcmshc",
+                                      Node,
+                                      &Node
+                                      ))
+diff --git a/Silicon/Sophgo/PlatformPei/PlatformPeiLib.c b/Silicon/Sophgo/PlatformPei/PlatformPeiLib.c
+index f1ec14b674..2e9ad024bf 100644
+--- a/Silicon/Sophgo/PlatformPei/PlatformPeiLib.c
++++ b/Silicon/Sophgo/PlatformPei/PlatformPeiLib.c
+@@ -163,7 +163,7 @@ PlatformPeimInitialization (
+   // Add SDHI resource
+   //
+   PopulateIoResources (Base, "bitmain,bm-sd");
+-  PopulateIoResources (Base, "sophgo,sg2044-dwcmshc");
++  PopulateIoResources (Base, "rv2036,c920v2-dwcmshc");
+ 
+   return EFI_SUCCESS;
+ }
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/CommonDevices.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/CommonDevices.asl
+index 8d01caa7e5..f4ec2ef364 100644
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/CommonDevices.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/CommonDevices.asl
+@@ -12,7 +12,7 @@
+ Scope(_SB)
+ {
+   Device (I2C0) {
+-    Name(_HID, "SOPH0003")
++    Name(_HID, "XTCV0003")
+     Name(_UID, 0)
+     Method (_STA)
+     {
+@@ -40,7 +40,7 @@ Scope(_SB)
+   }
+ 
+   Device (I2C1) {
+-    Name(_HID, "SOPH0003")
++    Name(_HID, "XTCV0003")
+     Name(_UID, 1)
+     Method (_STA)
+     {
+@@ -68,7 +68,7 @@ Scope(_SB)
+   }
+ 
+   Device (I2C2) {
+-    Name(_HID, "SOPH0003")
++    Name(_HID, "XTCV0003")
+     Name(_UID, 2)
+     Method (_STA)
+     {
+@@ -96,7 +96,7 @@ Scope(_SB)
+   }
+ 
+   Device (I2C3) {
+-    Name(_HID, "SOPH0003")
++    Name(_HID, "XTCV0003")
+     Name(_UID, 3)
+     Method (_STA)
+     {
+@@ -125,7 +125,7 @@ Scope(_SB)
+ 
+   // SPI0
+   Device (SPI0) {
+-    Name (_HID, "SOPH0004")
++    Name (_HID, "XTCV0004")
+     Name (_UID, 0)
+     Method (_STA)
+     {
+@@ -156,7 +156,7 @@ Scope(_SB)
+   }
+ 
+   Device (SPI1) {
+-    Name (_HID, "SOPH0004")
++    Name (_HID, "XTCV0004")
+     Name (_UID, 1)
+ 
+     Method (_STA)
+@@ -189,7 +189,7 @@ Scope(_SB)
+ 
+   // PWM
+   Device (PWM0) {
+-    Name (_HID, "SOPH0007")
++    Name (_HID, "XTCV0007")
+     Name (_UID, 0)
+ 
+     Method (_STA)
+@@ -220,7 +220,7 @@ Scope(_SB)
+ 
+   // GPIO
+   Device (GPI0) {
+-    Name(_HID, "SOPH0008")
++    Name(_HID, "XTCV0008")
+     Name(_CID, "HISI0181")
+     Name(_UID, 0)
+ 
+@@ -260,7 +260,7 @@ Scope(_SB)
+   }
+ 
+   Device (GPI1) {
+-    Name(_HID, "SOPH0008")
++    Name(_HID, "XTCV0008")
+     Name(_CID, "HISI0181")
+     Name(_UID, 1)
+ 
+@@ -300,7 +300,7 @@ Scope(_SB)
+   }
+ 
+   Device (GPI2) {
+-    Name(_HID, "SOPH0008")
++    Name(_HID, "XTCV0008")
+     Name(_CID, "HISI0181")
+     Name(_UID, 2)
+ 
+@@ -340,7 +340,7 @@ Scope(_SB)
+   }
+ 
+   Device (TPU0) {
+-    Name (_HID, "SOPH0009")
++    Name (_HID, "XTCV0009")
+     Name (_UID, 0)
+     Name (_CCA, 0)
+ 
+@@ -364,7 +364,7 @@ Scope(_SB)
+ 
+   // system controller
+   Device (SCTL) {
+-    Name(_HID, "SOPH0011")
++    Name(_HID, "XTCV0011")
+ 
+     Name(_CRS, ResourceTemplate() {
+       QWordMemory (
+@@ -384,7 +384,7 @@ Scope(_SB)
+   }
+ 
+   Device (PCTL) {
+-    Name(_HID, "SOPH0010")
++    Name(_HID, "XTCV0010")
+ 
+     Name(_CRS, ResourceTemplate() {
+ 	  QWordMemory (
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Ethernet.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Ethernet.asl
+index 82e8ab9d3f..70599a4e88 100644
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Ethernet.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Ethernet.asl
+@@ -11,7 +11,7 @@
+ Scope(_SB)
+ {
+   Device (ETH0) {
+-    Name (_HID, "SOPH0006")
++    Name (_HID, "XTCV0006")
+     Name (_UID, 0)
+     Name (_CCA, 0)
+     Method (_STA)
+@@ -78,8 +78,8 @@ Scope(_SB)
+         Package (2) { "snps,rxpbl", 32 },
+         Package (2) { "snps,aal", 1 },
+         Package (2) { "snps,tso", 1 },
+-        Package (2) { "sophgo,gmac", 1 },
+-        Package (2) { "sophgo,gmac-no-rxdelay", 1 },
++        Package (2) { "rv2036,gmac", 1 },
++        Package (2) { "rv2036,gmac-no-rxdelay", 1 },
+ 
+         Package (2) { "snps,axi-config", \_SB.ETH0.AXIC },
+         Package (2) { "snps,mtl-rx-config", \_SB.ETH0.MTRX },
+@@ -231,7 +231,7 @@ Scope(_SB)
+       Package () {
+         Package (2) { "interrupt-names", Package () { "macirq" } },
+         Package (2) { "snps,tso", 1 },
+-        Package (2) { "sophgo,xlgmac", 1 },
++        Package (2) { "rv2036,xlgmac", 1 },
+         Package (2) { "snps,axi-config", \_SB.ETH1.AXIC },
+         Package (2) { "snps,mtl-rx-config", \_SB.ETH1.MTRX },
+         Package (2) { "snps,mtl-tx-config", \_SB.ETH1.MTTX },
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Intc.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Intc.asl
+index 5a8bbaeab6..69ce83ad36 100644
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Intc.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Intc.asl
+@@ -29,7 +29,7 @@ Scope(_SB)
+   }
+ 
+   Device (MSI) {        // PCIe-MSI
+-    Name(_HID, "SOPH0001")
++    Name(_HID, "XTCV0001")
+     Name(_CRS, ResourceTemplate() {
+       QWordMemory (
+         ResourceProducer, PosDecode,
+@@ -109,7 +109,7 @@ Scope(_SB)
+       Package ()
+       {
+         Package () { "reg-bitwidth", 32 },
+-        Package () { "sophgo,msi-num-vecs", 504 },
++        Package () { "rv2036,msi-num-vecs", 504 },
+       }
+     })
+   }
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Mmc.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Mmc.asl
+index 2169ab2617..d73d167070 100644
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Mmc.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Mmc.asl
+@@ -13,7 +13,7 @@ Scope(_SB)
+ {
+   Device (MMC0)
+   {
+-    Name (_HID, "SOPH0012")
++    Name (_HID, "XTCV0012")
+     Name (_UID, 0x00)           // _UID: Unique ID
+     Name (_CCA, 0x00)           // _CCA: Cache Coherency Attribute
+ 
+@@ -49,7 +49,7 @@ Scope(_SB)
+ 
+   Device (SDC0)
+   {
+-    Name (_HID, "SOPH0005")
++    Name (_HID, "XTCV0005")
+     Name (_UID, 0x1)
+     Name (_CCA, 0x00)           // _CCA: Cache Coherency Attribute
+ 
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Pci.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Pci.asl
+index 792952d4cf..80b0e4ddd1 100644
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Pci.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Pci.asl
+@@ -200,7 +200,7 @@ Scope(_SB)
+ 
+     Device (RES0)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x0)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -370,7 +370,7 @@ Scope(_SB)
+ 
+     Device (RES1)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x1)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -538,7 +538,7 @@ Scope(_SB)
+ 
+     Device (RES2)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x2)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -706,7 +706,7 @@ Scope(_SB)
+ 
+     Device (RES3)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x3)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -874,7 +874,7 @@ Scope(_SB)
+ 
+     Device (RES4)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x4)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -1042,7 +1042,7 @@ Scope(_SB)
+ 
+     Device (RES4)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x5)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -1210,7 +1210,7 @@ Scope(_SB)
+ 
+     Device (RES4)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x6)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -1378,7 +1378,7 @@ Scope(_SB)
+ 
+     Device (RES4)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x7)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -1546,7 +1546,7 @@ Scope(_SB)
+ 
+     Device (RES4)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x8)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+@@ -1714,7 +1714,7 @@ Scope(_SB)
+ 
+     Device (RES4)
+     {
+-      Name (_HID, "SOPH0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
++      Name (_HID, "XTCV0000" /* PNP Motherboard Resources */)  // _HID: Hardware ID
+       Name (_UID, 0x9)  // Unique ID
+       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+       {
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/PowerButton.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/PowerButton.asl
+index 57d3e2bcd7..3385a77f35 100755
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/PowerButton.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/PowerButton.asl
+@@ -126,7 +126,7 @@ Scope(_SB)
+ 
+   // Reset Button Device description
+   Device (RSTB) {
+-    Name (_HID, "SOPH0013")
++    Name (_HID, "XTCV0013")
+     Name (_UID, One)
+     Method (_STA, 0x0, NotSerialized) {
+       Return (0x0B)
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/SG2044Dsdt.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/SG2044Dsdt.asl
+index 183df6406e..df8724e9bb 100644
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/SG2044Dsdt.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/SG2044Dsdt.asl
+@@ -10,7 +10,7 @@
+ 
+ #include "SG2044AcpiHeader.h"
+ 
+-DefinitionBlock ("DsdtTable.aml", "DSDT", 2, "SOPHGO", "2044    ",
++DefinitionBlock ("DsdtTable.aml", "DSDT", 2, "RV2036", "C920    ",
+                  EFI_ACPI_RISCV_OEM_REVISION) {
+   include ("Cpu.asl")
+   include ("CommonDevices.asl")
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Uart.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Uart.asl
+index 5546536412..208bf15d32 100644
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Uart.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Uart.asl
+@@ -12,7 +12,7 @@ Scope(_SB)
+ {
+   // DesignWare UART
+   Device(URT0) {
+-    Name(_HID, "SOPH0002")              // _HID: Hardware ID
++    Name(_HID, "XTCV0002")              // _HID: Hardware ID
+     Name(_UID, 0)
+     Name(_DSD, Package () {
+       ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
+diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Video.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Video.asl
+index 086e108bad..6592b3ba24 100644
+--- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Video.asl
++++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Video.asl
+@@ -10,7 +10,7 @@
+ Scope (_SB)
+ {
+   Device (BASE){
+-    Name (_HID, "SOPH0014")
++    Name (_HID, "XTCV0014")
+     Name (_CID, "sophon,base")
+     Method (_STA)  
+     {              
+@@ -18,8 +18,8 @@ Scope (_SB)
+     }              
+   }
+   Device (VCDV){
+-    Name (_HID, "SOPH0015")
+-    Name (_CID, "sophgo,vc_drv")
++    Name (_HID, "XTCV0015")
++    Name (_CID, "rv2036,vc_drv")
+     Name (_UID, 0)
+ 
+ 
+@@ -486,8 +486,8 @@ Scope (_SB)
+ 
+   Device (VPSS)
+   {
+-    Name (_HID, "SOPH0016")
+-    Name (_CID, "sophgo,vpss")
++    Name (_HID, "XTCV0016")
++    Name (_CID, "rv2036,vpss")
+     Name (_UID, 0)
+     Method(_STA) {
+       Return (0xF)
+diff --git a/Silicon/Sophgo/SG2044Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.c b/Silicon/Sophgo/SG2044Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.c
+index 470a416926..9ff4671168 100644
+--- a/Silicon/Sophgo/SG2044Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.c
++++ b/Silicon/Sophgo/SG2044Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.c
+@@ -490,7 +490,7 @@ AcpiPatchPCIe (
+   RETURN_STATUS                 FindNodeStatus;
+   PCI_INFO                      PciRoot;
+   INT32                         Node;
+-  CONST CHAR8                   *Compatible = "sophgo,sg2044-pcie-host";
++  CONST CHAR8                   *Compatible = "rv2036,c920v2-pcie-host";
+   QWORD_ADDRESS_SPACE_DESCRIPTOR  *PMem32;
+   QWORD_ADDRESS_SPACE_DESCRIPTOR  *Mem32;
+   QWORD_ADDRESS_SPACE_DESCRIPTOR  *PMem64;
+@@ -644,7 +644,7 @@ AcpiPatchCpu (
+   EFI_ACPI_HANDLE       ObjectHandle;
+   EFI_ACPI_DATA_TYPE    DataType;
+   FDT_CLIENT_PROTOCOL	*FdtClient;
+-  CONST CHAR8           *Compatible = "sophgo,sg2044-cppc";
++  CONST CHAR8           *Compatible = "rv2036,c920v2-cppc";
+   INT32                 Node;
+   CHAR8                 *Buffer;
+   UINTN                 DataSize;
+diff --git a/Silicon/Sophgo/SG2044Pkg/Drivers/ApeiDxe/Hest.c b/Silicon/Sophgo/SG2044Pkg/Drivers/ApeiDxe/Hest.c
+index 9688bdd89b..da5a0c5e59 100755
+--- a/Silicon/Sophgo/SG2044Pkg/Drivers/ApeiDxe/Hest.c
++++ b/Silicon/Sophgo/SG2044Pkg/Drivers/ApeiDxe/Hest.c
+@@ -68,9 +68,9 @@ ParsePcieRcConfig (
+   //
+   // Find all PCIe nodes
+   //
+-  for (FindNodeStatus = FdtClient->FindCompatibleNode (FdtClient, "sophgo,sg2044-pcie-host", &Node);
++  for (FindNodeStatus = FdtClient->FindCompatibleNode (FdtClient, "rv2036,c920v2-pcie-host", &Node);
+        FindNodeStatus == EFI_SUCCESS;
+-       FindNodeStatus = FdtClient->FindNextCompatibleNode (FdtClient, "sophgo,sg2044-pcie-host", Node, &Node)) {
++       FindNodeStatus = FdtClient->FindNextCompatibleNode (FdtClient, "rv2036,c920v2-pcie-host", Node, &Node)) {
+ 
+     //
+     // Get reg property for base addresses
+diff --git a/Silicon/Sophgo/SG2044Pkg/Include/SG2044AcpiHeader.h b/Silicon/Sophgo/SG2044Pkg/Include/SG2044AcpiHeader.h
+index 5df3ebacdf..2b50821485 100644
+--- a/Silicon/Sophgo/SG2044Pkg/Include/SG2044AcpiHeader.h
++++ b/Silicon/Sophgo/SG2044Pkg/Include/SG2044AcpiHeader.h
+@@ -15,10 +15,10 @@
+ //
+ // ACPI table information used to initialize tables.
+ //
+-#define EFI_ACPI_RISCV_OEM_ID           'S','O','P','H','G','O'
+-#define EFI_ACPI_RISCV_OEM_TABLE_ID     SIGNATURE_64 ('2','0','4','4',' ',' ',' ',' ')
++#define EFI_ACPI_RISCV_OEM_ID           'R','V','2','0','3','6'
++#define EFI_ACPI_RISCV_OEM_TABLE_ID     SIGNATURE_64 ('C','9','2','0',' ',' ',' ',' ')
+ #define EFI_ACPI_RISCV_OEM_REVISION     0x01
+-#define EFI_ACPI_RISCV_CREATOR_ID       SIGNATURE_32('S','O','P','H')
++#define EFI_ACPI_RISCV_CREATOR_ID       SIGNATURE_32('X','T','C','V')
+ #define EFI_ACPI_RISCV_CREATOR_REVISION 0x20241212
+ 
+ // A macro to initialise the common header part of EFI ACPI tables as defined by
+diff --git a/Silicon/Sophgo/SG2044Pkg/Library/PciPlatformLib/PciPlatformLib.c b/Silicon/Sophgo/SG2044Pkg/Library/PciPlatformLib/PciPlatformLib.c
+index e605a69c52..6176913d6a 100644
+--- a/Silicon/Sophgo/SG2044Pkg/Library/PciPlatformLib/PciPlatformLib.c
++++ b/Silicon/Sophgo/SG2044Pkg/Library/PciPlatformLib/PciPlatformLib.c
+@@ -559,7 +559,7 @@ InitPlatformFromFdt (
+   INT32               Node;
+   CONST VOID          *Prop;
+   UINT32              PropSize;
+-  CONST CHAR8         *Compatible = "sophgo,sg2044-pcie-host";
++  CONST CHAR8         *Compatible = "rv2036,c920v2-pcie-host";
+   UINT32              Segment;
+   PCI_ROOT_BRIDGE     *PciRoot;
+   DW_PCIE             *DwPcie;
