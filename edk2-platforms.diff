@@ -1,5 +1,5 @@
 diff --git a/Silicon/Sophgo/Drivers/Net/DwMac4SnpDxe/DwMac4SnpDxe.c b/Silicon/Sophgo/Drivers/Net/DwMac4SnpDxe/DwMac4SnpDxe.c
-index f32e59b360..d6d5fbe12e 100755
+index f32e59b360d7..d6d5fbe12e56 100755
 --- a/Silicon/Sophgo/Drivers/Net/DwMac4SnpDxe/DwMac4SnpDxe.c
 +++ b/Silicon/Sophgo/Drivers/Net/DwMac4SnpDxe/DwMac4SnpDxe.c
 @@ -1587,7 +1587,7 @@ DwMac4SnpDxeEntry (
@@ -12,7 +12,7 @@ index f32e59b360..d6d5fbe12e 100755
    );
    if (Status == EFI_NOT_FOUND) {
 diff --git a/Silicon/Sophgo/Drivers/Net/StmmacMdioDxe/StmmacMdioDxe.c b/Silicon/Sophgo/Drivers/Net/StmmacMdioDxe/StmmacMdioDxe.c
-index 37cfc4d5fb..a291a1297a 100644
+index 37cfc4d5fb20..a291a1297a64 100644
 --- a/Silicon/Sophgo/Drivers/Net/StmmacMdioDxe/StmmacMdioDxe.c
 +++ b/Silicon/Sophgo/Drivers/Net/StmmacMdioDxe/StmmacMdioDxe.c
 @@ -304,7 +304,7 @@ MdioDxeInitialize (
@@ -43,7 +43,7 @@ index 37cfc4d5fb..a291a1297a 100644
  				NULL
  				);
 diff --git a/Silicon/Sophgo/Drivers/SdHostDxe/SdHostDxe.c b/Silicon/Sophgo/Drivers/SdHostDxe/SdHostDxe.c
-index a17e652f4f..17026b1e87 100644
+index a17e652f4fc2..17026b1e8706 100644
 --- a/Silicon/Sophgo/Drivers/SdHostDxe/SdHostDxe.c
 +++ b/Silicon/Sophgo/Drivers/SdHostDxe/SdHostDxe.c
 @@ -435,13 +435,13 @@ SdHostInitialize (
@@ -63,7 +63,7 @@ index a17e652f4f..17026b1e87 100644
                                       &Node
                                       ))
 diff --git a/Silicon/Sophgo/PlatformPei/PlatformPeiLib.c b/Silicon/Sophgo/PlatformPei/PlatformPeiLib.c
-index f1ec14b674..2e9ad024bf 100644
+index f1ec14b67445..2e9ad024bfbf 100644
 --- a/Silicon/Sophgo/PlatformPei/PlatformPeiLib.c
 +++ b/Silicon/Sophgo/PlatformPei/PlatformPeiLib.c
 @@ -163,7 +163,7 @@ PlatformPeimInitialization (
@@ -76,7 +76,7 @@ index f1ec14b674..2e9ad024bf 100644
    return EFI_SUCCESS;
  }
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/CommonDevices.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/CommonDevices.asl
-index 8d01caa7e5..f4ec2ef364 100644
+index 8d01caa7e53e..f4ec2ef36466 100644
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/CommonDevices.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/CommonDevices.asl
 @@ -12,7 +12,7 @@
@@ -197,7 +197,7 @@ index 8d01caa7e5..f4ec2ef364 100644
      Name(_CRS, ResourceTemplate() {
  	  QWordMemory (
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Ethernet.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Ethernet.asl
-index 82e8ab9d3f..70599a4e88 100644
+index 82e8ab9d3f09..70599a4e882f 100644
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Ethernet.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Ethernet.asl
 @@ -11,7 +11,7 @@
@@ -230,7 +230,7 @@ index 82e8ab9d3f..70599a4e88 100644
          Package (2) { "snps,mtl-rx-config", \_SB.ETH1.MTRX },
          Package (2) { "snps,mtl-tx-config", \_SB.ETH1.MTTX },
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Intc.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Intc.asl
-index 5a8bbaeab6..69ce83ad36 100644
+index 5a8bbaeab62b..69ce83ad3633 100644
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Intc.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Intc.asl
 @@ -29,7 +29,7 @@ Scope(_SB)
@@ -252,7 +252,7 @@ index 5a8bbaeab6..69ce83ad36 100644
      })
    }
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Mmc.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Mmc.asl
-index 2169ab2617..d73d167070 100644
+index 2169ab26176f..d73d16707020 100644
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Mmc.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Mmc.asl
 @@ -13,7 +13,7 @@ Scope(_SB)
@@ -274,7 +274,7 @@ index 2169ab2617..d73d167070 100644
      Name (_CCA, 0x00)           // _CCA: Cache Coherency Attribute
  
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Pci.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Pci.asl
-index 792952d4cf..80b0e4ddd1 100644
+index 792952d4cf51..80b0e4ddd11a 100644
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Pci.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Pci.asl
 @@ -200,7 +200,7 @@ Scope(_SB)
@@ -368,7 +368,7 @@ index 792952d4cf..80b0e4ddd1 100644
        Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
        {
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/PowerButton.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/PowerButton.asl
-index 57d3e2bcd7..3385a77f35 100755
+index 57d3e2bcd7d1..3385a77f355f 100755
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/PowerButton.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/PowerButton.asl
 @@ -126,7 +126,7 @@ Scope(_SB)
@@ -381,7 +381,7 @@ index 57d3e2bcd7..3385a77f35 100755
      Method (_STA, 0x0, NotSerialized) {
        Return (0x0B)
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/SG2044Dsdt.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/SG2044Dsdt.asl
-index 183df6406e..df8724e9bb 100644
+index 183df6406e88..b6d3f5c29d67 100644
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/SG2044Dsdt.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/SG2044Dsdt.asl
 @@ -10,7 +10,7 @@
@@ -393,8 +393,16 @@ index 183df6406e..df8724e9bb 100644
                   EFI_ACPI_RISCV_OEM_REVISION) {
    include ("Cpu.asl")
    include ("CommonDevices.asl")
+@@ -20,7 +20,6 @@ DefinitionBlock ("DsdtTable.aml", "DSDT", 2, "SOPHGO", "2044    ",
+   include ("Intc.asl")
+   include ("Pci.asl")
+   include ("PowerButton.asl")
+-  include ("Video.asl")
+ 
+   Scope (\_SB_.I2C1)
+   {
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Uart.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Uart.asl
-index 5546536412..208bf15d32 100644
+index 554653641233..208bf15d3282 100644
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Uart.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Uart.asl
 @@ -12,7 +12,7 @@ Scope(_SB)
@@ -407,7 +415,7 @@ index 5546536412..208bf15d32 100644
      Name(_DSD, Package () {
        ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
 diff --git a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Video.asl b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Video.asl
-index 086e108bad..6592b3ba24 100644
+index 086e108bad81..6592b3ba243c 100644
 --- a/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Video.asl
 +++ b/Silicon/Sophgo/SG2044Pkg/AcpiTables/Dsdt/Video.asl
 @@ -10,7 +10,7 @@
@@ -442,7 +450,7 @@ index 086e108bad..6592b3ba24 100644
      Method(_STA) {
        Return (0xF)
 diff --git a/Silicon/Sophgo/SG2044Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.c b/Silicon/Sophgo/SG2044Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.c
-index 470a416926..9ff4671168 100644
+index 470a4169266f..9ff467116854 100644
 --- a/Silicon/Sophgo/SG2044Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.c
 +++ b/Silicon/Sophgo/SG2044Pkg/Drivers/AcpiPlatformDxe/AcpiPlatformDxe.c
 @@ -490,7 +490,7 @@ AcpiPatchPCIe (
@@ -464,7 +472,7 @@ index 470a416926..9ff4671168 100644
    CHAR8                 *Buffer;
    UINTN                 DataSize;
 diff --git a/Silicon/Sophgo/SG2044Pkg/Drivers/ApeiDxe/Hest.c b/Silicon/Sophgo/SG2044Pkg/Drivers/ApeiDxe/Hest.c
-index 9688bdd89b..da5a0c5e59 100755
+index 9688bdd89b5b..da5a0c5e59ff 100755
 --- a/Silicon/Sophgo/SG2044Pkg/Drivers/ApeiDxe/Hest.c
 +++ b/Silicon/Sophgo/SG2044Pkg/Drivers/ApeiDxe/Hest.c
 @@ -68,9 +68,9 @@ ParsePcieRcConfig (
@@ -480,7 +488,7 @@ index 9688bdd89b..da5a0c5e59 100755
      //
      // Get reg property for base addresses
 diff --git a/Silicon/Sophgo/SG2044Pkg/Include/SG2044AcpiHeader.h b/Silicon/Sophgo/SG2044Pkg/Include/SG2044AcpiHeader.h
-index 5df3ebacdf..2b50821485 100644
+index 5df3ebacdf7c..2b5082148596 100644
 --- a/Silicon/Sophgo/SG2044Pkg/Include/SG2044AcpiHeader.h
 +++ b/Silicon/Sophgo/SG2044Pkg/Include/SG2044AcpiHeader.h
 @@ -15,10 +15,10 @@
@@ -498,7 +506,7 @@ index 5df3ebacdf..2b50821485 100644
  
  // A macro to initialise the common header part of EFI ACPI tables as defined by
 diff --git a/Silicon/Sophgo/SG2044Pkg/Library/PciPlatformLib/PciPlatformLib.c b/Silicon/Sophgo/SG2044Pkg/Library/PciPlatformLib/PciPlatformLib.c
-index e605a69c52..6176913d6a 100644
+index e605a69c5218..6176913d6a35 100644
 --- a/Silicon/Sophgo/SG2044Pkg/Library/PciPlatformLib/PciPlatformLib.c
 +++ b/Silicon/Sophgo/SG2044Pkg/Library/PciPlatformLib/PciPlatformLib.c
 @@ -559,7 +559,7 @@ InitPlatformFromFdt (
